@@ -1,0 +1,5 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartArguments>-nobanners -server localhost -vault Vault -username "Administrator" -password "" -comment "" -workingfolder "c:\temp" -file "$/Witttest/04-1.bmp" -checkinfile "c:\temp\04-1.bmp"</StartArguments>
+  </PropertyGroup>
+</Project>
