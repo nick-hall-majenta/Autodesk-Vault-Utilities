@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://AutodeskDM/Services/Security/01/17/2008/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://AutodeskDM/Services/Security/01/17/2008/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://AutodeskDM/Services/Security/01/17/2008/">
+      <s:element name="SignIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="knowledgeVault" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SignInResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SecurityHeader" type="tns:SecurityHeader" />
+      <s:complexType name="SecurityHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Ticket" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:long" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="SignIn2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SignIn2Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="SignOut">
+        <s:complexType />
+      </s:element>
+      <s:element name="SignOutResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetACLsByEntityIds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entityIds" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="long" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetACLsByEntityIdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetACLsByEntityIdsResult" type="tns:ArrayOfACL" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfACL">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ACL" nillable="true" type="tns:ACL" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ACL">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ACEArray" type="tns:ArrayOfACE" />
+        </s:sequence>
+        <s:attribute name="Id" type="s:long" use="required" />
+      </s:complexType>
+      <s:complexType name="ArrayOfACE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ACE" nillable="true" type="tns:ACE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ACE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PermisArray" type="tns:ArrayOfAccessPermis" />
+        </s:sequence>
+        <s:attribute name="UserGrpId" type="s:long" use="required" />
+      </s:complexType>
+      <s:complexType name="ArrayOfAccessPermis">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Permis" nillable="true" type="tns:AccessPermis" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AccessPermis">
+        <s:attribute name="Id" type="s:long" use="required" />
+        <s:attribute name="Val" type="s:boolean" use="required" />
+      </s:complexType>
+      <s:element name="UpdateACL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="entityId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="entries" type="tns:ArrayOfACE" />
+            <s:element minOccurs="1" maxOccurs="1" name="prpgType" type="tns:PrpgType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="PrpgType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="AppendPermissions" />
+          <s:enumeration value="ReplacePermissions" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="UpdateACLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateACLResult" type="tns:ACL" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetACLUpdateRestrictions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="entityId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="entries" type="tns:ArrayOfACE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetACLUpdateRestrictionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetACLUpdateRestrictionsResult" type="tns:ArrayOfSecRestric" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSecRestric">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SecRestric" nillable="true" type="tns:SecRestric" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SecRestric">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ParamArray" />
+        </s:sequence>
+        <s:attribute name="Code" type="tns:SecRestricCode" use="required" />
+      </s:complexType>
+      <s:simpleType name="SecRestricCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="LessRestrctiveParent" />
+          <s:enumeration value="BadEntityId" />
+          <s:enumeration value="UnsupportedEntityClass" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetAllAccessPermissionsAndGroups">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="AccessPermisAndGrp">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DefArray" type="tns:ArrayOfAccessPermisDef" />
+          <s:element minOccurs="0" maxOccurs="1" name="GrpArray" type="tns:ArrayOfAccessPermisGrp" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAccessPermisDef">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Def" nillable="true" type="tns:AccessPermisDef" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AccessPermisDef">
+        <s:attribute name="Id" type="s:long" use="required" />
+        <s:attribute name="Name" type="s:string" />
+        <s:attribute name="Descr" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfAccessPermisGrp">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Desc" nillable="true" type="tns:AccessPermisGrp" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AccessPermisGrp">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PermisArray" type="tns:ArrayOfAccessPermis" />
+        </s:sequence>
+        <s:attribute name="Id" type="s:long" use="required" />
+        <s:attribute name="Name" type="s:string" />
+        <s:attribute name="Descr" type="s:string" />
+      </s:complexType>
+      <s:element name="GetAllAccessPermissionsAndGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllAccessPermissionsAndGroupsResult" type="tns:AccessPermisAndGrp" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSystemACL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entries" type="tns:ArrayOfACE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSystemACLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddSystemACLResult" type="tns:ACL" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateACLEntries">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="aclId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="entries" type="tns:ArrayOfACE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateACLEntriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateACLEntriesResult" type="tns:ACL" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSystemACLs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entityIds" type="tns:ArrayOfLong" />
+            <s:element minOccurs="1" maxOccurs="1" name="aclId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSystemACLsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetEntACLsByEntityIds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entityIds" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EntsAndACLs">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ACLArray" type="tns:ACL" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EntACLArray" type="tns:EntACL" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntACL">
+        <s:attribute name="EntId" type="s:long" use="required" />
+        <s:attribute name="ACLId" type="s:long" use="required" />
+        <s:attribute name="SysACLId" type="s:long" use="required" />
+      </s:complexType>
+      <s:element name="GetEntACLsByEntityIdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEntACLsByEntityIdsResult" type="tns:EntsAndACLs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SignInSoapIn">
+    <wsdl:part name="parameters" element="tns:SignIn" />
+  </wsdl:message>
+  <wsdl:message name="SignInSoapOut">
+    <wsdl:part name="parameters" element="tns:SignInResponse" />
+  </wsdl:message>
+  <wsdl:message name="SignInSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="SignIn2SoapIn">
+    <wsdl:part name="parameters" element="tns:SignIn2" />
+  </wsdl:message>
+  <wsdl:message name="SignIn2SoapOut">
+    <wsdl:part name="parameters" element="tns:SignIn2Response" />
+  </wsdl:message>
+  <wsdl:message name="SignIn2SecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="SignOutSoapIn">
+    <wsdl:part name="parameters" element="tns:SignOut" />
+  </wsdl:message>
+  <wsdl:message name="SignOutSoapOut">
+    <wsdl:part name="parameters" element="tns:SignOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="SignOutSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetACLsByEntityIdsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetACLsByEntityIds" />
+  </wsdl:message>
+  <wsdl:message name="GetACLsByEntityIdsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetACLsByEntityIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetACLsByEntityIdsSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpdateACLSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateACL" />
+  </wsdl:message>
+  <wsdl:message name="UpdateACLSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateACLResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateACLSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetACLUpdateRestrictionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetACLUpdateRestrictions" />
+  </wsdl:message>
+  <wsdl:message name="GetACLUpdateRestrictionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetACLUpdateRestrictionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetACLUpdateRestrictionsSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAccessPermissionsAndGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllAccessPermissionsAndGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAccessPermissionsAndGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllAccessPermissionsAndGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAccessPermissionsAndGroupsSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="AddSystemACLSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSystemACL" />
+  </wsdl:message>
+  <wsdl:message name="AddSystemACLSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSystemACLResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSystemACLSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpdateACLEntriesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateACLEntries" />
+  </wsdl:message>
+  <wsdl:message name="UpdateACLEntriesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateACLEntriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateACLEntriesSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="SetSystemACLsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetSystemACLs" />
+  </wsdl:message>
+  <wsdl:message name="SetSystemACLsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetSystemACLsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetSystemACLsSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetEntACLsByEntityIdsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEntACLsByEntityIds" />
+  </wsdl:message>
+  <wsdl:message name="GetEntACLsByEntityIdsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEntACLsByEntityIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEntACLsByEntityIdsSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:portType name="SecurityServiceSoap">
+    <wsdl:operation name="SignIn">
+      <wsdl:input message="tns:SignInSoapIn" />
+      <wsdl:output message="tns:SignInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SignIn2">
+      <wsdl:input message="tns:SignIn2SoapIn" />
+      <wsdl:output message="tns:SignIn2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SignOut">
+      <wsdl:input message="tns:SignOutSoapIn" />
+      <wsdl:output message="tns:SignOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetACLsByEntityIds">
+      <wsdl:input message="tns:GetACLsByEntityIdsSoapIn" />
+      <wsdl:output message="tns:GetACLsByEntityIdsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateACL">
+      <wsdl:input message="tns:UpdateACLSoapIn" />
+      <wsdl:output message="tns:UpdateACLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetACLUpdateRestrictions">
+      <wsdl:input message="tns:GetACLUpdateRestrictionsSoapIn" />
+      <wsdl:output message="tns:GetACLUpdateRestrictionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccessPermissionsAndGroups">
+      <wsdl:input message="tns:GetAllAccessPermissionsAndGroupsSoapIn" />
+      <wsdl:output message="tns:GetAllAccessPermissionsAndGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSystemACL">
+      <wsdl:input message="tns:AddSystemACLSoapIn" />
+      <wsdl:output message="tns:AddSystemACLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateACLEntries">
+      <wsdl:input message="tns:UpdateACLEntriesSoapIn" />
+      <wsdl:output message="tns:UpdateACLEntriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSystemACLs">
+      <wsdl:input message="tns:SetSystemACLsSoapIn" />
+      <wsdl:output message="tns:SetSystemACLsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEntACLsByEntityIds">
+      <wsdl:input message="tns:GetEntACLsByEntityIdsSoapIn" />
+      <wsdl:output message="tns:GetEntACLsByEntityIdsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SecurityServiceSoap" type="tns:SecurityServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SignIn">
+      <soap:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/SignIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:SignInSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignIn2">
+      <soap:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/SignIn2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:SignIn2SecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignOut">
+      <soap:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/SignOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SignOutSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:SignOutSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetACLsByEntityIds">
+      <soap:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/GetACLsByEntityIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetACLsByEntityIdsSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateACL">
+      <soap:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/UpdateACL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateACLSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetACLUpdateRestrictions">
+      <soap:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/GetACLUpdateRestrictions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetACLUpdateRestrictionsSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccessPermissionsAndGroups">
+      <soap:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/GetAllAccessPermissionsAndGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAllAccessPermissionsAndGroupsSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSystemACL">
+      <soap:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/AddSystemACL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddSystemACLSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateACLEntries">
+      <soap:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/UpdateACLEntries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateACLEntriesSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSystemACLs">
+      <soap:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/SetSystemACLs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SetSystemACLsSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntACLsByEntityIds">
+      <soap:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/GetEntACLsByEntityIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEntACLsByEntityIdsSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SecurityServiceSoap12" type="tns:SecurityServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SignIn">
+      <soap12:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/SignIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SignInSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignIn2">
+      <soap12:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/SignIn2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SignIn2SecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignOut">
+      <soap12:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/SignOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SignOutSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SignOutSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetACLsByEntityIds">
+      <soap12:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/GetACLsByEntityIds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetACLsByEntityIdsSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateACL">
+      <soap12:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/UpdateACL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateACLSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetACLUpdateRestrictions">
+      <soap12:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/GetACLUpdateRestrictions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetACLUpdateRestrictionsSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccessPermissionsAndGroups">
+      <soap12:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/GetAllAccessPermissionsAndGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAllAccessPermissionsAndGroupsSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSystemACL">
+      <soap12:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/AddSystemACL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddSystemACLSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateACLEntries">
+      <soap12:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/UpdateACLEntries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateACLEntriesSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSystemACLs">
+      <soap12:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/SetSystemACLs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SetSystemACLsSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntACLsByEntityIds">
+      <soap12:operation soapAction="http://AutodeskDM/Services/Security/01/17/2008/GetEntACLsByEntityIds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEntACLsByEntityIdsSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SecurityService">
+    <wsdl:port name="SecurityServiceSoap" binding="tns:SecurityServiceSoap">
+      <soap:address location="http://localhost/AutodeskDM/Services/SecurityService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SecurityServiceSoap12" binding="tns:SecurityServiceSoap12">
+      <soap12:address location="http://localhost/AutodeskDM/Services/SecurityService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

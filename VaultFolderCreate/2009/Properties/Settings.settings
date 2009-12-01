@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="VaultFolderCreate.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="VaultFolderCreate_SecuritySvc_SecurityService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/AutodeskDM/Services/SecurityService.asmx</Value>
+    </Setting>
+    <Setting Name="VaultFolderCreate_DocumentSvc_DocumentService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/AutodeskDM/Services/DocumentService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
