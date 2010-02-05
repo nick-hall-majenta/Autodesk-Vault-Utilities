@@ -1,0 +1,91 @@
+[Root]
+Most Recent Package=DwgIdentifier
+
+
+[Package|DwgIdentifier|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\development\Customers\Parkburn\Tools\DwgIdentifier\Package
+
+[Package|DwgIdentifier|Configure DAO ISAMs]
+Applicable=No
+
+[Package|DwgIdentifier|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|DwgIdentifier|Files Found]
+
+[Package|DwgIdentifier|Files Released]
+
+[Package|DwgIdentifier|Missing Dependency Information]
+C:\Program Files\Autodesk\Inventor 2009\Bin\RxInventor.tlb=
+
+[Package|DwgIdentifier|Out-of-Date Dependency Information]
+
+[Package|DwgIdentifier|Files Added]
+
+[Package|DwgIdentifier|Files Removed]
+
+[Package|DwgIdentifier|Files In Project]
+C:\development\Customers\Parkburn\Tools\DwgIdentifier\DwgIdentifier.exe=Yes
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Program Files\Autodesk\Inventor 2009\Bin\RxInventor.tlb=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|DwgIdentifier|Configure Registry Files]
+Applicable=No
+
+[Package|DwgIdentifier|Configure Remote Servers]
+Applicable=No
+
+[Package|DwgIdentifier|Install Locations]
+C:\development\Customers\Parkburn\Tools\DwgIdentifier\DwgIdentifier.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Autodesk\Inventor 2009\Bin\RxInventor.tlb=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|DwgIdentifier|Configure Shared Files]
+Applicable=Yes
+C:\development\Customers\Parkburn\Tools\DwgIdentifier\DwgIdentifier.exe=No
+
+[Package|DwgIdentifier|Distribution]
+Type=single
+Size=
+Title=DwgIdentifier
+
+[Package|DwgIdentifier|IconGroups]
+Group0=DwgIdentifier
+PrivateGroup0=-1
+Parent0=$(Programs)
+
+[Package|DwgIdentifier|DwgIdentifier]
+Icon1=DwgIdentifier.exe
+Title1=DwgIdentifier
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|DwgIdentifier|Package]
+PackageFolder=C:\development\Customers\Parkburn\Tools\DwgIdentifier\Package
+ProjectFolder=C:\development\Customers\Parkburn\Tools\DwgIdentifier
+ServerSideCab=
+File1=C:\development\Customers\Parkburn\Tools\DwgIdentifier\Package\setup.exe
+File2=C:\development\Customers\Parkburn\Tools\DwgIdentifier\Package\Setup.Lst
+File3=C:\development\Customers\Parkburn\Tools\DwgIdentifier\Package\DwgIdentifier.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
