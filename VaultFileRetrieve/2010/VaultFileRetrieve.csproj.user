@@ -1,0 +1,5 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartArguments>-nobanner -server localhost -vault Training -username Administrator -password "" -file "$/Designs/Part5.ipt" -version 2 -outputfile "C:\development\Customers\Parkburn\Data\Training\Output\Designs\Part5.ipt.2"</StartArguments>
+  </PropertyGroup>
+</Project>
