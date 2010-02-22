@@ -1,0 +1,7 @@
+@echo off
+set ACAD="C:\Program Files\Autodesk\ACADM 2010\acad.exe"
+set PROFILESWITCH=/p
+set PROFILE="<<VANILLA>>"
+set SCRIPTSWITCH=/b
+
+
