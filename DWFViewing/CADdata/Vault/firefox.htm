@@ -116,3 +116,63 @@
     </TABLE>
 	</body>
 </html>
+
+<HEAD>
+<TITLE>ADR Browser Test Page</TITLE>
+
+	<script type="text/javascript">
+	<!--
+	var BrowserDetect = {
+		init: function () {
+			this.plugintype = this.searchString(this.dataBrowser) || "FFADR";
+		},
+		searchString: function (data) {
+			for (var i=0;i<data.length;i++) {
+				var dataString = data[i].string;
+				var dataProp = data[i].prop;
+				this.versionSearchString = data[i].versionSearch || data[i].identity;
+				if (dataString) {
+					if (dataString.indexOf(data[i].subString) != -1)
+						return data[i].identity;
+				}
+				else if (dataProp)
+					return data[i].identity;
+			}
+		},
+		dataBrowser: [
+			{
+				string: navigator.userAgent,
+				subString: "MSIE",
+				identity: "Explorer",
+				versionSearch: "MSIE"
+			}
+	   ]
+	};
+	BrowserDetect.init();
+	// -->
+	</script>
+
+</HEAD>
+
+<BODY>
+
+Below is the plugin for ADR:<br/>
+<script type="text/javascript">
+<!--
+if (BrowserDetect.plugintype=='FFADR') {
+	document.write('<OBJECT ID="ADR" TYPE="application/x-Autodesk-DWF" WIDTH="600" HEIGHT="450"><PARAM NAME="dwffilename" VALUE=http://labs.blogs.com/articles/Playmobile.dwf/></OBJECT>');
+} else {
+	document.write('<OBJECT CLASSID="clsid:A662DA7E-CCB7-4743-B71A-D817F6D575DF" CODEBASE=http://www.autodesk.com/global/dwfviewer/installer/DwfViewerSetup.cab#version=7,0,0,928 WIDTH="600" HEIGHT="450"> <PARAM NAME="Src" VALUE="http://labs.blogs.com/articles/Playmobile.dwf"> </OBJECT>');
+}
+
+// -->
+
+</script>
+<br/>
+End of Plugin.
+
+</BODY>
+</HTML>
+
+
+
