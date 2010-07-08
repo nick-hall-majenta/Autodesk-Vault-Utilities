@@ -104,6 +104,7 @@ namespace VaultDump
                 docSrv.Url = "http://" + server + "/AutodeskDM/Services/DocumentService.asmx";
                 Folder root = docSrv.GetFolderRoot();
                 //root = docSrv.GetFolderByPath("$/Designs/Designs/C690 T3");
+                root = docSrv.GetFolderByPath("$/Code Numbers");
                 ProcessFilesInFolder(root, docSrv, rootfolder, hidden);
             }
             catch (Exception ex)
@@ -138,6 +139,44 @@ namespace VaultDump
             return new string(charArray);
         }
 
+        private void DownloadFileInParts(Document.File file, DocumentService docSvc, string outputfile)
+        {
+            int MAX_BUFFER_SIZE = 1024 * 1024 * 4;    // 49 MB buffer size
+            System.IO.FileStream outputStream = null;
+
+            try
+            {
+                long startByte = 0;
+                long endByte;
+
+                // create the output file
+                outputStream = System.IO.File.OpenWrite(outputfile);
+
+                // for each loop, the MAX_BUFFER_SIZE number of bytes gets downloaded from the server and written
+                // to disk
+                while (startByte < file.FileSize)
+                {
+                    byte[] buffer; 
+                    endByte = startByte + MAX_BUFFER_SIZE;
+                    if (endByte > file.FileSize)
+                        endByte = file.FileSize;
+
+                    // grab the file part from the server
+                    buffer = docSvc.DownloadFilePart(file.Id, startByte, endByte, true);
+
+                    // write the data to the file
+                    outputStream.Write(buffer, 0, buffer.Length);
+
+                    startByte += buffer.Length;
+                }
+            }
+            finally
+            {
+                if (outputStream != null)
+                    outputStream.Close();
+            }
+        }
+ 
         private void ProcessFilesInFolder(Folder parentFolder, DocumentService docSvc, string rootfolder, Boolean hidden)
         {
             VaultDump.Document.File[] files = docSvc.GetLatestFilesByFolderId(parentFolder.Id, hidden);
@@ -153,7 +192,7 @@ namespace VaultDump
                         Console.WriteLine(" Created By: " + verFile.CreateUserName);
                         //Console.WriteLine(" Comment: " + verFile.Comm);
                         //Console.WriteLine("             Master ID: " + String.Format("{0,6:0,0}", verFile.MasterId) + " ID: " + String.Format("{0,6:0,0}", verFile.Id));
-                        byte[] bytes;
+                        //byte[] bytes;
                         string outputfile = rootfolder + parentFolder.FullName.Substring(1) + "/" + verFile.Name;
                         outputfile = outputfile.Replace("/", "\\");
                         for (int counter = 0; counter < outputfile.Length; counter++)
@@ -172,8 +211,17 @@ namespace VaultDump
                             }
                         }
 
-                        string fileName = docSvc.DownloadFile(verFile.Id, true, out bytes);
-                        System.IO.File.WriteAllBytes(outputfile, bytes);
+                        try
+                        {
+                            //string fileName = docSvc.DownloadFile(verFile.Id, true, out bytes);
+                            //System.IO.File.WriteAllBytes(outputfile, bytes);
+                            DownloadFileInParts(verFile, docSvc, outputfile);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("ERROR: Saving " + parentFolder.FullName + "/" + verFile.Name + " (Version " + vernum.ToString() + ")");
+                            Console.WriteLine(ex.Message.ToString());
+                        }
 
                         //Console.ReadLine();
                     }
