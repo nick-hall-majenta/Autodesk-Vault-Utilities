@@ -104,7 +104,7 @@ namespace VaultDump
                 docSrv.Url = "http://" + server + "/AutodeskDM/Services/DocumentService.asmx";
                 Folder root = docSrv.GetFolderRoot();
                 //root = docSrv.GetFolderByPath("$/Designs/Designs/C690 T3");
-                root = docSrv.GetFolderByPath("$/Code Numbers");
+                //root = docSrv.GetFolderByPath("$/Code Numbers");
                 ProcessFilesInFolder(root, docSrv, rootfolder, hidden);
             }
             catch (Exception ex)
