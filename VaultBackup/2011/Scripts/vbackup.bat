@@ -37,11 +37,12 @@ REM databasefolder - Location of the SQL Server data files
 REM failedlogsfolder - Folder for logs that cannot be emailed
 REM blankfile - File name for an empty text file for use by the email system
 REM filetosend - Location of the file to email
-REM vaults - List of vaults to check
+REM vaults - List of vaults to check (no spaces in vault name at present)
 REM dbthreshold - Size to report on eg 600M
 REM emailserver - IP address or name of SMTP server
 REM emailfrom - Email 'From' address
-REM emailto - Email 'To' address (Only one supported at present)
+REM emailto - Email 'To' address (seperate with , no spaces)
+REM           eg vaultadmin@vault.com,suppport@vault.com
 REM emailsubject - Email subject
 REM backupuser - Username for ADMS Console backup
 REM backuppassword - Password for ADMS Console backup (has to be plain text)
@@ -115,6 +116,7 @@ echo All databases are BELOW threshold (%dbthreshold%) >> %dbreportfile%
 echo Checking database fragmentation
 echo. >> %dbreportfile%
 
+Rem TODO: Spaces in Vault names
 For %%X in %vaults% do (
 echo -------------------------------------------------------------- >> %dbreportfile%
 echo Database %%X >> %dbreportfile%
@@ -145,7 +147,7 @@ rmdir /Q /S "%backupfolder%\B"
 :nobackupb
 
 if not exist "%backupfolder%\A" goto nobackupa
-echo Moving 'A' backup files to 'A' backup
+echo Moving 'A' backup files to 'B' backup
 ren "%backupfolder%\A" B
 :nobackupa
 
