@@ -37,7 +37,8 @@ REM databasefolder - Location of the SQL Server data files
 REM failedlogsfolder - Folder for logs that cannot be emailed
 REM blankfile - File name for an empty text file for use by the email system
 REM filetosend - Location of the file to email
-REM vaults - List of vaults to check (no spaces in vault name at present)
+REM vaults - List of vaults to check (use [] for spaces in vault name)
+REM        - eg set vaults=(Vault Vault[]With[]Spaces[]in[]Name)
 REM dbthreshold - Size to report on eg 600M
 REM emailserver - IP address or name of SMTP server
 REM emailfrom - Email 'From' address
@@ -49,6 +50,8 @@ REM backuppassword - Password for ADMS Console backup (has to be plain text)
 REM sauser - Username for SQL Server SysAdmin
 REM sapassword - Password  for SQL Server SysAdmin (has to be plain text)
 
+REM Start of configuration variables
+
 set installfolder=C:\VaultBackup
 set backupfolder=C:\Backups\Vault
 set osqlfolder=C:\Program Files\Microsoft SQL Server\100\Tools\Binn
@@ -57,7 +60,7 @@ set databasefolder=C:\Program Files\Microsoft SQL Server\MSSQL10.AUTODESKVAULT\M
 set failedlogsfolder=%installfolder%\Logs
 set blankfile=%installfolder%\blank.txt
 set filetosend=%installfolder%\email.txt
-set vaults=(Production Archive)
+set vaults=(Vault Multiword[]Vault)
 set dbthreshold=650M
 set emailserver=192.168.1.5
 set emailfrom=vault@vault.com
@@ -67,6 +70,8 @@ set backupuser=administrator
 set backuppassword=
 set sauser=sa
 set sapassword=AutodeskVault@26200
+
+REM End of configuration variables
 
 for /f "Tokens=1" %%i in ('time /t') do set tm=%%i
 for /f "Tokens=1-4 Delims=/ " %%i in ('date /t') do  set logtime=%%i/%%j/%%k %tm%
@@ -119,12 +124,13 @@ echo. >> %dbreportfile%
 Rem TODO: Spaces in Vault names
 For %%X in %vaults% do (
 echo -------------------------------------------------------------- >> %dbreportfile%
-echo Database %%X >> %dbreportfile%
-echo USE %%X > %installfolder%\vaulttables.sql
+echo Database %%X | %installfolder%\sed "s/\[\]/ /g" >> %dbreportfile%
+REM echo USE %%X > %installfolder%\vaulttables.sql
+echo USE [%%X] | %installfolder%\sed "s/\[\]/ /g" > %installfolder%\vaulttables.sql
 echo GO >> %installfolder%\vaulttables.sql
 echo select name from sysobjects where type = 'U' order by name >> %installfolder%\vaulttables.sql
 echo GO >> %installfolder%\vaulttables.sql
-echo USE %%X > %installfolder%\vfragmentation.sql
+echo USE [%%X] | %installfolder%\sed "s/\[\]/ /g" > %installfolder%\vfragmentation.sql
 echo GO >> %installfolder%\vfragmentation.sql
 "%osqlfolder%\osql" -U%sauser% -P%sapassword% -S ".\AutodeskVault" -i %installfolder%\vaulttables.sql | %installfolder%\egrep "^ [^-].*" | %installfolder%\sed "s/^ /DBCC SHOWCONTIG \('/" | %installfolder%\sed "s/ *$/'\)\nGO/" >> %installfolder%\vfragmentation.sql
 "%osqlfolder%\osql" -U%sauser% -P%sapassword% -S ".\AutodeskVault" -i %installfolder%\vfragmentation.sql | %installfolder%\egrep "Fragment|Table" | %installfolder%\sed "s/' (.*/'/" | %installfolder%\sed "s/^Table/\nTable/"  | %installfolder%\awk -F : -f %installfolder%\vfragmentation.awk >> %dbreportfile%
