@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VAULTFOLDERCREATE>
+  <FOLDERS>
+    <FOLDER>A/B/Cdef/G</FOLDER>
+    <FOLDER>A/B/Cdef/H</FOLDER>
+    <FOLDER>A/B/Cdef/I</FOLDER>
+    <FOLDER>A/B/Jklm</FOLDER>
+    <FOLDER>N</FOLDER>
+    <FOLDER>O</FOLDER>
+  </FOLDERS>
+  <CONFIG>
+    <DISPLAYLEVELS>2</DISPLAYLEVELS>
+    <DISPLAYTREE>$/Libraries</DISPLAYTREE>
+  </CONFIG>
+</VAULTFOLDERCREATE>

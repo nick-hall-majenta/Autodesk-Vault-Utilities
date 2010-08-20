@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <VAULTFOLDERCREATE>
-  <TEMPLATE>PRJ####</TEMPLATE>
   <FOLDERS>
     <FOLDER>/A/B/Cdef/I</FOLDER>
     <FOLDER>A/B/Jklm</FOLDER>
