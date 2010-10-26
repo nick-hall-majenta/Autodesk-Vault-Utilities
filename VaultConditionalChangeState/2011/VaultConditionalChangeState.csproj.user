@@ -1,0 +1,5 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartArguments>-server localhost -vault Wallop -username Administrator -apassword gorillas -state "Awaiting Final Approval" -checkstates "Awaiting Final Approval|Awaiting R &amp; D Approval|Awaiting Technical Approval|Awaiting Manufacturing Approval" -newstate "Pre-Release" -lifecycledefinition "Wallop Workflow"  -revertstate "Work In Progress"</StartArguments>
+  </PropertyGroup>
+</Project>
