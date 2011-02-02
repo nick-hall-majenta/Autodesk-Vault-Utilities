@@ -20,8 +20,8 @@ namespace VaultSyncReleased
     {
         static void Main(string[] args)
         {
-            const string version = "0.1";
-            const string date = "08/07/2010";
+            const string version = "0.2";
+            const string date = "08/01/2011";
 
             Arguments CommandLine = new Arguments(args);
 
