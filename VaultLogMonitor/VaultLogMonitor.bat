@@ -31,7 +31,7 @@ set optionalresultfile=%installfolder%\optionalresult.txt
 set optionalactionfile=%installfolder%\optionalaction.bat
 
 set savedlogsfolder=%installfolder%\Logs
-if not exist "%failedlogsfolder%" mkdir "%failedlogsfolder%"
+if not exist "%savedlogsfolder%" mkdir "%savedlogsfolder%"
 
 : Console Log File is ADMSConsoleLog-YYYYMMDD.txt
 : VLog File is vlog-YYYYMMDD.txt
@@ -80,12 +80,12 @@ FOR /F "usebackq" %%A IN ('%consolelogfound%') DO set consolelogfsize=%%~zA
 FOR /F "usebackq" %%A IN ('%vlogfound%') DO set vlogfsize=%%~zA
 
 if %consolelogfsize% GTR 0 (
-"%installfolder%\blat" "%consolelogfound%": -server %emailserver% -f %emailfrom% -to %emailto% -subject "%emailsubject% - Console Log" > NUL
+"%installfolder%\blat" "%consolelogfound%" -server %emailserver% -f %emailfrom% -to %emailto% -subject "%emailsubject% - Console Log" > NUL
 copy "%consolelogfound%" "%savedlogsfolder%\ConsoleLog-%logdate%-%logtime%.txt" > NUL
 )
 
 if %vlogfsize% GTR 0 (
-"%installfolder%\blat" "%vlogfound%": -server %emailserver% -f %emailfrom% -to %emailto% -subject "%emailsubject% - VLog" > NUL
+"%installfolder%\blat" "%vlogfound%" -server %emailserver% -f %emailfrom% -to %emailto% -subject "%emailsubject% - VLog" > NUL
 copy "%vlogfound%" "%savedlogsfolder%\VLog-%logdate%-%logtime%.txt" > NUL
 )
 
@@ -93,7 +93,6 @@ copy "%vlogfound%" "%savedlogsfolder%\VLog-%logdate%-%logtime%.txt" > NUL
 : It must output the optional result file
 : If the optional result file exists and is larger than 0 bytes, the optional action batch file will be run
 if not exist "%optionaltestfile%" GOTO END
-set optionaltestfile=%installfolder%\optionaltest.bat
 if exist "%optionalresultfile%" del "%optionalresultfile%"
 call "%optionaltestfile%" "%consolelogdiff%" "%vlogdiff%"
 if not exist "%optionalresultfile%" GOTO END

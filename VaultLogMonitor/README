@@ -25,7 +25,9 @@ The files are configured to be installed in C:\VaultLogMonitor
 If they are installed anywhere else, the .BAT & .AWK files should be 
 checked for any required changes.
 
-Configurationoptionalaction.bat
+Configuration
+
+optionalaction.bat
 optionaltest.bat
 
 -------------
