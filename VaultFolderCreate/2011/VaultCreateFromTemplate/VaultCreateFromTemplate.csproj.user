@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <StartAction>Program</StartAction>
-    <StartProgram>C:\Program Files\Autodesk\Vault Professional 2011\Explorer\Connectivity.VaultPro.exe</StartProgram>
+    <StartProgram>C:\Program Files (x86)\Autodesk\Vault Workgroup 2011\Explorer\Connectivity.VaultWkg.exe</StartProgram>
   </PropertyGroup>
 </Project>

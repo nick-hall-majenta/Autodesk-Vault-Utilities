@@ -19,6 +19,8 @@ using Autodesk.Connectivity.WebServices;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.XPath;
+using System.Text.RegularExpressions;
+
 
 
 [assembly: AssemblyCompany("Autodesk")]
@@ -68,6 +70,38 @@ namespace VaultCreateFromTemplate
             return 0;
         }
 
+        private List<string> GetFolderStructure(DocumentService docSrv, string folderpath)
+        {
+            List<string> foldernames;
+            Folder filefolder;
+            Folder thisfolder;
+            thisfolder = docSrv.GetFolderRoot();
+            filefolder = docSrv.GetFolderByPath(folderpath);
+
+            foldernames = GetFoldersInFolder(filefolder, docSrv);
+            return foldernames;
+        }
+
+        private List<string> GetFoldersInFolder(Folder parentFolder, DocumentService docSvc)
+		{
+            List<string> foldernames = new List<string>();
+            List<string> newfoldernames;
+            Folder[] folders = docSvc.GetFoldersByParentId(parentFolder.Id, false);
+			if (folders != null && folders.Length > 0)
+			{
+				foreach (Folder folder in folders)
+				{
+                    foldernames.Add(folder.FullName);
+                    newfoldernames = GetFoldersInFolder(folder, docSvc);
+                    foreach (string newfolder in newfoldernames )
+                    {
+                        foldernames.Add(newfolder);
+                    }
+				}
+			}
+            return foldernames;
+		}
+	
         private void LoadConfigurationFile(string configFile, string rootfolderpath)
         {
             XPathNavigator nav;
@@ -75,19 +109,93 @@ namespace VaultCreateFromTemplate
             XPathNodeIterator nodeIter;
             docNav = new XPathDocument(@configFile);
             nav = docNav.CreateNavigator();
-            nodeIter = nav.Select("/VAULTFOLDERCREATE/FOLDERS/FOLDER");
-            while (nodeIter.MoveNext())
+            nodeIter = nav.Select("/VAULTFOLDERCREATE/SOURCE");
+            nodeIter.MoveNext();
+            string vaultsource = "";
+            try
             {
-                string thisFolder = nodeIter.Current.Value;
-                if (thisFolder.StartsWith("/"))
+                vaultsource = nodeIter.Current.TypedValue.ToString();
+            }
+            catch
+            {
+            }
+            nodeIter = nav.Select("/VAULTFOLDERCREATE/TEMPLATE");
+            nodeIter.MoveNext();
+            string vaulttemplate = "";
+            try
+            {
+                vaulttemplate = nodeIter.Current.TypedValue.ToString();
+            }
+            catch
+            {
+            }
+            MessageBox.Show(vaultsource);
+            MessageBox.Show(vaulttemplate);
+            if (vaulttemplate != "")
+            {
+                Regex hashesPattern = new Regex("[^#]*#+[^#]*");
+                if (hashesPattern.Matches(vaulttemplate).Count == 1)
                 {
-                    thisFolder = rootfolderpath + thisFolder;
+                    string regexstring = vaulttemplate.Replace("#","[0-9]");
+                    Regex hashPattern = new Regex("#+");
+                    Regex formatPattern = new Regex(hashPattern.Match(vaulttemplate).ToString());
+                    string formatstring = new string('0', hashPattern.Match(vaulttemplate).Length);
+                    formatstring = "{0:" + formatstring + "}";
+                    formatstring = formatPattern.Replace(vaulttemplate, formatstring);
+                    MessageBox.Show(String.Format(formatstring, 123));
+                    //string formatstring = vaulttemplate.Substring( Replace("#", "[0-9]");
+                    Folder thisfolder;
+                    thisfolder = mDocSvc.GetFolderByPath(rootfolderpath);
+                    Folder[] folders = mDocSvc.GetFoldersByParentId(thisfolder.Id, false);
+                    long nextincrement = 0;
+                    Regex foldermatch = new Regex(regexstring);
+                    if (folders != null && folders.Length > 0)
+                    {
+                        foreach (Folder folder in folders)
+                        {
+                            MessageBox.Show(foldermatch.Match(folder.Name).ToString());
+                            //if ( folder.FullName)
+                            {
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                    thisFolder = rootfolderpath + "/" + thisFolder;
+                    MessageBox.Show("Invalid Pattern [" + vaulttemplate + "]", "Create Folder Tool", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 }
-                CreateFolder(mDocSvc, thisFolder);
+                
+                
+            
+            }
+            if (vaultsource.StartsWith("$/"))
+            {
+                List<string> foldernames = GetFolderStructure(mDocSvc,vaultsource);
+                MessageBox.Show(foldernames.Count.ToString());
+                foreach (string foldername in foldernames)
+                {
+                    //MessageBox.Show(foldername);
+                    string thisFolder = foldername.Replace(vaultsource, rootfolderpath);
+                    //MessageBox.Show(thisFolder);
+                    //CreateFolder(mDocSvc, thisFolder);
+                }
+            }
+            else
+            {
+                nodeIter = nav.Select("/VAULTFOLDERCREATE/FOLDERS/FOLDER");
+                while (nodeIter.MoveNext())
+                {
+                    string thisFolder = nodeIter.Current.Value;
+                    if (thisFolder.StartsWith("/"))
+                    {
+                        thisFolder = rootfolderpath + thisFolder;
+                    }
+                    else
+                    {
+                        thisFolder = rootfolderpath + "/" + thisFolder;
+                    }
+                    CreateFolder(mDocSvc, thisFolder);
+                }
             }
         }
 

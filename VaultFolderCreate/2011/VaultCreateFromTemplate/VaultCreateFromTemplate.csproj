@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\..\..\Program Files\Autodesk\Vault Professional 2011\Explorer\Extensions\VaultCreateFromTemplate\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\Program Files %28x86%29\Autodesk\Vault Workgroup 2011\Explorer\Extensions\VaultCreateFromTemplate\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,12 +33,12 @@
   <ItemGroup>
     <Reference Include="Autodesk.Connectivity.Explorer.Extensibility, Version=1.0.3610.29019, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Vault Professional 2011\Explorer\Autodesk.Connectivity.Explorer.Extensibility.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Autodesk\Vault Workgroup 2011\Explorer\Autodesk.Connectivity.Explorer.Extensibility.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Autodesk.Connectivity.WebServices, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\ADMS Professional 2011\SDK\bin\Autodesk.Connectivity.WebServices.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Autodesk\ADMS Workgroup 2011\SDK\bin\Autodesk.Connectivity.WebServices.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Services3, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -76,6 +76,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CreateFoldersFromVault.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="VaultFolderCreate.xml" />
+    <Content Include="VaultFolders.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

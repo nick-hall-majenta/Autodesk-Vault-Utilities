@@ -1,0 +1,16 @@
+C:\Nick\Development\GitHub\Autodesk-Vault-Utilities\VaultFolderCreate\2011\VaultCreateFromTemplate\obj\Debug\ResolveAssemblyReference.cache
+C:\Nick\Program Files\Autodesk\Vault Professional 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.vcet.config
+C:\Nick\Program Files\Autodesk\Vault Professional 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.dll.config
+C:\Nick\Program Files\Autodesk\Vault Professional 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.dll
+C:\Nick\Program Files\Autodesk\Vault Professional 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.pdb
+C:\Nick\Development\GitHub\Autodesk-Vault-Utilities\VaultFolderCreate\2011\VaultCreateFromTemplate\obj\Debug\VaultCreateFromTemplate.dll
+C:\Nick\Development\GitHub\Autodesk-Vault-Utilities\VaultFolderCreate\2011\VaultCreateFromTemplate\obj\Debug\VaultCreateFromTemplate.pdb
+C:\Nick\Program Files (x86)\Autodesk\Vault Workgroup 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.vcet.config
+C:\Nick\Program Files (x86)\Autodesk\Vault Workgroup 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.dll.config
+C:\Nick\Program Files (x86)\Autodesk\Vault Workgroup 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.dll
+C:\Nick\Program Files (x86)\Autodesk\Vault Workgroup 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.pdb
+C:\Program Files (x86)\Autodesk\Vault Workgroup 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.vcet.config
+C:\Program Files (x86)\Autodesk\Vault Workgroup 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.dll.config
+C:\Program Files (x86)\Autodesk\Vault Workgroup 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.dll
+C:\Program Files (x86)\Autodesk\Vault Workgroup 2011\Explorer\Extensions\VaultCreateFromTemplate\VaultCreateFromTemplate.pdb
+C:\Program Files (x86)\Autodesk\Vault Workgroup 2011\Explorer\Extensions\VaultCreateFromTemplate\CreateFoldersFromVault.xml
