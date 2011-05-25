@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-16"?>
+<doc>
+  <assembly>
+    <name>Autodesk.Connectivity.Extensibility.Framework</name>
+  </assembly>
+  <members>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ApiVersionAttribute">
+      <summary>Define the [assembly: ApiVersion] attribute which MUST be specified for your extension
+            to be loaded.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ApiVersionAttribute.#ctor(System.String)">
+      <summary>Create an ApiVersionAttribute</summary>
+      <param name="version">Version of the API the command extension is written for.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ApiVersionAttribute.Version">
+      <summary>Gets the version string.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ApiVersionAttribute.Version">
+      <summary>Gets the version string.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.Extension">
+      <summary>Metadata about an extension.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.Extension.ConvertExtensionType(Autodesk.Connectivity.Extensibility.Framework.ExtensionTypeEnum)">
+      <summary>Gets the System.Type entry point for a given extension type.</summary>
+      <returns>The Sytem.Type which serves as the entry point to the Extension.</returns>
+      <param name="typeEnum">The extension type.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.Extension.GetDefaultExtensionsFolder">
+      <summary>Gets the folder were all the extensions are loaded fro  by default.</summary>
+      <returns>The default extensions folder.</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.Extension.GetFromConfigFile(System.String)">
+      <summary>Gets an Extension object from information in the config file.</summary>
+      <returns>The Extension object.  Null is returned if the extension is not found or invalid.</returns>
+      <param name="configPath">The path to the configuration file.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.Extension.GetFromFolder(System.String)">
+      <summary>Gets an extension from its folder.</summary>
+      <returns>The Extension object.  Null is returned if the extension is not found or invalid.</returns>
+      <param name="folder">The folder with the extension in it.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.Extension.GetFromRootFolder(System.String)">
+      <summary>Gets Extensions that live under the specified folder.</summary>
+      <returns>A list of Extensions found.  If none are found, the list is empty.</returns>
+      <param name="folder">The root folder for extensions.  Individual extensions are
+            in seperate folders one level deeper.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.ApiVersion">
+      <summary>Gets the API Version setting on the Extension</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.ApiVersion">
+      <summary>Gets the API Version setting on the Extension</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.AssemblyName">
+      <summary>Gets the name of the assembly that contains the entry points for the Extension.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.AssemblyName">
+      <summary>Gets the name of the assembly that contains the entry points for the Extension.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.Company">
+      <summary>Gets the company name on the Extension</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.Company">
+      <summary>Gets the company name on the Extension</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.CURRENT_API_VERSION">
+      <summary>The API Version supported by the current framework.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.CURRENT_API_VERSION">
+      <summary>The API Version supported by the current framework.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.Description">
+      <summary>Gets the description of the Extension</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.Description">
+      <summary>Gets the description of the Extension</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.ExtensionTypes">
+      <summary>Gets the types of extensions supported.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.ExtensionTypes">
+      <summary>Gets the types of extensions supported.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.FilePath">
+      <summary>Gets the full path to the extension DLL.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.FilePath">
+      <summary>Gets the full path to the extension DLL.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.Folder">
+      <summary>Gets the folder path where the extension lives.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.Folder">
+      <summary>Gets the folder path where the extension lives.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.Id">
+      <summary>Gets the unique identifier for the Extension</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.Id">
+      <summary>Gets the unique identifier for the Extension</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.LoadedObjects">
+      <summary>Gets the collection of entry points for the Extension.  Each support extension type has its own entry point.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.LoadedObjects">
+      <summary>Gets the collection of entry points for the Extension.  Each support extension type has its own entry point.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.ProductName">
+      <summary>Gets the product name on the Extension</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.ProductName">
+      <summary>Gets the product name on the Extension</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionException">
+      <summary>An Exception class for Vault extensions.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.#ctor(Autodesk.Connectivity.Extensibility.Framework.ErrorCodes,System.String,System.Collections.Generic.IEnumerable{Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction},System.Exception)">
+      <summary>Creates a new exception for Vault Extension related activities.</summary>
+      <param name="errorCode">The error code.</param>
+      <param name="message">A human readable message.</param>
+      <param name="restrictions">Restriction information.</param>
+      <param name="innerException">The inner exception.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.#ctor(Autodesk.Connectivity.Extensibility.Framework.ErrorCodes,System.String,System.Collections.Generic.IEnumerable{Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction})">
+      <summary>Creates a new exception for Vault Extension related activities.</summary>
+      <param name="errorCode">The error code.</param>
+      <param name="message">A human readable message.</param>
+      <param name="restrictions">Restriction information.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.#ctor(Autodesk.Connectivity.Extensibility.Framework.ErrorCodes,System.String,System.Exception)">
+      <summary>Creates a new exception for Vault Extension related activities.</summary>
+      <param name="errorCode">The error code.</param>
+      <param name="message">A human readable message.</param>
+      <param name="innerException">The inner exception.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.#ctor(Autodesk.Connectivity.Extensibility.Framework.ErrorCodes,System.String)">
+      <summary>Creates a new exception for Vault Extension related activities.</summary>
+      <param name="errorCode">The error code.</param>
+      <param name="message">A human readable message.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.ErrorCode">
+      <summary>Gets the error code.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.ErrorCode">
+      <summary>Gets the error code.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.Parameters">
+      <summary>Gets or sets the metadata about the error.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.Parameters">
+      <summary>Gets or sets the metadata about the error.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.Restrictions">
+      <summary>Gets the collection of restrictions.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.Restrictions">
+      <summary>Gets the collection of restrictions.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionIdAttribute">
+      <summary>Define the [assembly: ExtensionId] attribute which MUST be specified for your extension
+            to be loaded.  Each extension should have a unique ID.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionIdAttribute.#ctor(System.String)">
+      <summary>Create an ExtensionIdAttribute</summary>
+      <param name="id">The unique ID for the extension.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionIdAttribute.Id">
+      <summary>Gets the unique ID for the extension.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionIdAttribute.Id">
+      <summary>Gets the unique ID for the extension.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader">
+      <summary>A utility for loading extensions.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.#ctor">
+      <summary>The constructor.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.LoadExtensions(Autodesk.Connectivity.Extensibility.Framework.ExtensionTypeEnum)">
+      <summary>Loads all extensions of a given type.</summary>
+      <returns>A collection of loaded Extensions.</returns>
+      <param name="extensionType">An extension type.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.Exceptions">
+      <summary>Gets the collection of load exceptions.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.Exceptions">
+      <summary>Gets the collection of load exceptions.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction">
+      <summary>A restriction from a Vault Extension.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction.#ctor(System.String,System.String)">
+      <summary>The constructor for a restriction.</summary>
+      <param name="objectName">A human readable description of the object which is failing.</param>
+      <param name="message">A human readable message indicating what the problem is.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction.Message">
+      <summary>Gets the human readable message indicating what the problem is.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction.Message">
+      <summary>Gets the human readable message indicating what the problem is.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction.ObjectName">
+      <summary>Gets the human readable description of the object which is failing.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction.ObjectName">
+      <summary>Gets the human readable description of the object which is failing.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction.Source">
+      <summary>Gets the name of the extenension that created the restriction.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction.Source">
+      <summary>Gets the name of the extenension that created the restriction.</summary>
+    </member>
+  </members>
+</doc>

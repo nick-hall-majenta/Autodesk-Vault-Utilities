@@ -1,0 +1,5 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartArguments>-server localhost -vault DemoVault -username Administrator -password "" -rootfolder C:\temp\vault -property State -propertyvalue Released -exportdwfs -notallfiles</StartArguments>
+  </PropertyGroup>
+</Project>
