@@ -66,6 +66,7 @@ namespace VaultSyncReleased
             {
                 Console.WriteLine("Autodesk Vault VaultSyncReleased Tool V" + version + " (" + date + ")");
                 Console.WriteLine("(c) 2010 Alta Systems Ltd");
+                Console.WriteLine("(c) 2011 Majenta Solutions");
                 Console.WriteLine("");
             }
             if (server == "" || vault == "" || username == "" || rootfolder == "")
