@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-16"?>
+<doc>
+  <assembly>
+    <name>Autodesk.Connectivity.WebServicesTools</name>
+  </assembly>
+  <members>
+    <member name="T:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials">
+      <summary>Credentials for making anonymous server calls.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.#ctor(System.String)">
+      <summary>Creates new anonymous credentials.</summary>
+      <param name="serverName">The name of the Vault server to connect to.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.VaultName">
+      <summary>Gets the vault name.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.AnonymousCredentials.VaultName">
+      <summary>Gets the vault name.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.WebServicesTools.ContainerCredentials">
+      <summary>A set of credentials that contains another set of credentials.
+            This is useful for cases where a new sign in is not required, but a re-sign-in may be needed.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.#ctor(Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials,System.Int64,System.String)">
+      <summary>The constructor.</summary>
+      <param name="innerCredentials">The existing credentials.</param>
+      <param name="userId">The ID of the logged in User.</param>
+      <param name="ticket">The security ticket.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.VaultName">
+      <summary>Gets the vault name.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.ContainerCredentials.VaultName">
+      <summary>Gets the vault name.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials">
+      <summary>Properties and methods for establishing and maintaining authentication data.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.SignIn(Autodesk.Connectivity.WebServices.SecurityService,Autodesk.Connectivity.WebServices.WinAuthService)">
+      <summary>Signs in to the Vault server.</summary>
+      <returns>The security header from the sign in.</returns>
+      <param name="secSvc">A Security Service object.</param>
+      <param name="winAuthSvc">A Win Auth Service object.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.SignOut(Autodesk.Connectivity.WebServices.SecurityService,Autodesk.Connectivity.WebServices.WinAuthService)">
+      <summary>Signs out from the Vault server.</summary>
+      <param name="secSvc">A Security Service object.</param>
+      <param name="winAuthSvc">A Win Auth Service object.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.ServerName">
+      <summary>The name of the Vault server.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.ServerName">
+      <summary>The name of the Vault server.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the SignIn method is implemented.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the SignIn method is implemented.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the SignOut method is implemented.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the SignOut method is implemented.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.VaultName">
+      <summary>The name of the vault.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials.VaultName">
+      <summary>The name of the vault.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.WebServicesTools.SecurityHeaderInfo">
+      <summary>Information about the Vault security header.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.SecurityHeaderInfo.#ctor(System.Int64,System.String)">
+      <summary>Creates the header from userId and ticket information.</summary>
+      <param name="userId">The ID of the logged in User.</param>
+      <param name="ticket">The security ticket.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.SecurityHeaderInfo.#ctor">
+      <summary>Creates an anonymous security header.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.SecurityHeaderInfo.IsAnonymous">
+      <summary>Gets the value telling if the connection is anonymous</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.SecurityHeaderInfo.IsAnonymous">
+      <summary>Gets the value telling if the connection is anonymous</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.SecurityHeaderInfo.Ticket">
+      <summary>Gets the security ticket.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.SecurityHeaderInfo.Ticket">
+      <summary>Gets the security ticket.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.SecurityHeaderInfo.UserId">
+      <summary>Gets the ID of the logged in Tser.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.SecurityHeaderInfo.UserId">
+      <summary>Gets the ID of the logged in Tser.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials">
+      <summary>Credentials for making server calls with userId and ticket information from a previous sign in.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.#ctor(System.String,System.String,System.Int64,System.String)">
+      <summary>The constructor.</summary>
+      <param name="serverName">The name of the Vault server.</param>
+      <param name="vaultName">The name of the Vault.</param>
+      <param name="userId">The User ID</param>
+      <param name="ticket">The security ticket.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.VaultName">
+      <summary>Gets the vault name.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserIdTicketCredentials.VaultName">
+      <summary>Gets the vault name.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials">
+      <summary>Credentials for making server calls with username and password information.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.#ctor(System.String,System.String,System.String,System.String)">
+      <summary>The Constructor.</summary>
+      <param name="serverName">The server name.</param>
+      <param name="vaultName">The vault name.  Enter null for cases that need global access.</param>
+      <param name="userName">The user name.</param>
+      <param name="password">The password.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.#ctor(System.String,System.String,System.String,System.String,System.Boolean)">
+      <summary>The Constructor.</summary>
+      <param name="serverName">The server name.</param>
+      <param name="vaultName">The vault name.  Enter null for cases that need global access.</param>
+      <param name="userName">The user name.</param>
+      <param name="password">The password.</param>
+      <param name="readOnly">The read only setting.  Default is false.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.Password">
+      <summary>Gets the password.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.Password">
+      <summary>Gets the password.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.ReadOnly">
+      <summary>Gets if the connection is read only</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.ReadOnly">
+      <summary>Gets if the connection is read only</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.UserName">
+      <summary>Gets the username.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.UserName">
+      <summary>Gets the username.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.VaultName">
+      <summary>Gets the vault name.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.UserPasswordCredentials.VaultName">
+      <summary>Gets the vault name.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials">
+      <summary>Credentials for making server calls based on information from an existing web service.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.#ctor(Autodesk.Connectivity.WebServices.IWebService)">
+      <summary>The constructor.</summary>
+      <param name="svc">A web service object. The service must already have security information
+            from a prior sign-in.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.VaultName">
+      <summary>Gets an empty string. The vault name information is not known in this case.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceCredentials.VaultName">
+      <summary>Gets an empty string. The vault name information is not known in this case.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.WebServicesTools.WebServiceErrorInfo">
+      <summary>Information about an error from the Vault server.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.WebServiceErrorInfo.#ctor(System.Exception)">
+      <summary>The constructor.</summary>
+      <param name="ex">An exception thrown from a Web Service API call.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceErrorInfo.ErrorCode">
+      <summary>Gets the error code from the Vault server. This value is meaningless if IsWebServiceError is false.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceErrorInfo.ErrorCode">
+      <summary>Gets the error code from the Vault server. This value is meaningless if IsWebServiceError is false.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceErrorInfo.Exception">
+      <summary>Gets the original Exception.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceErrorInfo.Exception">
+      <summary>Gets the original Exception.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceErrorInfo.HasRestrictions">
+      <summary>Gets the value telling if the restriction data needs to be examined.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceErrorInfo.HasRestrictions">
+      <summary>Gets the value telling if the restriction data needs to be examined.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceErrorInfo.IsWebServiceError">
+      <summary>Gets the value telling if the error originated from the Vault server. If this value is false, the error did not come from the Vault server.  Something else caused the error, such as
+            a network failure.  Examine the Exception to get information about the error.  The other properties, such as ErrorCode 
+            are not valid if the this value is false.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceErrorInfo.IsWebServiceError">
+      <summary>Gets the value telling if the error originated from the Vault server. If this value is false, the error did not come from the Vault server.  Something else caused the error, such as
+            a network failure.  Examine the Exception to get information about the error.  The other properties, such as ErrorCode 
+            are not valid if the this value is false.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.WebServicesTools.WebServiceManager">
+      <summary>A class for managing web service objects and connection information.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.WebServiceManager.#ctor(Autodesk.Connectivity.WebServicesTools.IWebServiceCredentials)">
+      <summary>Constructor for Service Manager.</summary>
+      <param name="credentials">The security credentials used to log in and/or set the security headers.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.WebServiceManager.Dispose">
+      <summary>Used for IDisposable.  Signs out of Vault and clears the security information on all services.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.AdminService">
+      <summary>Gets the Admin service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.AdminService">
+      <summary>Gets the Admin service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.BehaviorService">
+      <summary>Gets the Behavior service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.BehaviorService">
+      <summary>Gets the Behavior service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.CategoryService">
+      <summary>Gets the category service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.CategoryService">
+      <summary>Gets the category service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.ChangeOrderService">
+      <summary>Gets the change order service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.ChangeOrderService">
+      <summary>Gets the change order service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.DocumentService">
+      <summary>Gets the Document service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.DocumentService">
+      <summary>Gets the Document service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.DocumentServiceExtensions">
+      <summary>Gets the Document service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.DocumentServiceExtensions">
+      <summary>Gets the Document service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.ForumService">
+      <summary>Gets the forum service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.ForumService">
+      <summary>Gets the forum service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.InformationService">
+      <summary>Gets the Information service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.InformationService">
+      <summary>Gets the Information service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.ItemService">
+      <summary>Gets the item service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.ItemService">
+      <summary>Gets the item service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.JobService">
+      <summary>Gets the job service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.JobService">
+      <summary>Gets the job service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.KnowledgeVaultService">
+      <summary>Gets the Document service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.KnowledgeVaultService">
+      <summary>Gets the Document service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.PackageService">
+      <summary>Gets the package service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.PackageService">
+      <summary>Gets the package service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.PropertyService">
+      <summary>Gets the property service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.PropertyService">
+      <summary>Gets the property service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.ReplicationService">
+      <summary>Gets the replication service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.ReplicationService">
+      <summary>Gets the replication service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.ReSignIn">
+      <summary>Gets or sets the re-sign in behavior on all the services in the WebServiceManager.
+            True means that if the security header is invalidated, the Manager will attempt to re-authenticate and re-run the API call.
+            False means that if the security header is invalidated, the error will bubble up normally. Re-signIn is only possible with credentials that support SignIn</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.ReSignIn">
+      <summary>Gets or sets the re-sign in behavior on all the services in the WebServiceManager.
+            True means that if the security header is invalidated, the Manager will attempt to re-authenticate and re-run the API call.
+            False means that if the security header is invalidated, the error will bubble up normally. Re-signIn is only possible with credentials that support SignIn</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.RevisionService">
+      <summary>Gets the revision service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.RevisionService">
+      <summary>Gets the revision service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.SecurityService">
+      <summary>Gets the security service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.SecurityService">
+      <summary>Gets the security service object, or creates one if needed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WebServiceManager.WinAuthService">
+      <summary>Gets the WinAuth service object, or creates one if needed.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WebServiceManager.WinAuthService">
+      <summary>Gets the WinAuth service object, or creates one if needed.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials">
+      <summary>Credentials for making server calls with Windows user account information.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.#ctor(System.String,System.String,System.Boolean)">
+      <summary>The Constructor.</summary>
+      <param name="serverName">The server name.</param>
+      <param name="vaultName">The vault name.  Enter null for cases that need global access.</param>
+      <param name="readOnly">The read only setting.  Default is false.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.#ctor(System.String,System.String)">
+      <summary>The Constructor.</summary>
+      <param name="serverName">The server name.</param>
+      <param name="vaultName">The vault name.  Enter null for cases that need global access.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.ReadOnly">
+      <summary>Gets if the connection is read only</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.ReadOnly">
+      <summary>Gets if the connection is read only</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.RequiresSignIn">
+      <summary>Gets the value telling if a sign in is required before a service can be used.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.RequiresSignOut">
+      <summary>Gets the value telling if a sign out should be called when the service goes out of scope.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.SecurityHeaderInfo">
+      <summary>Gets the security header.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.ServerName">
+      <summary>Gets the server name.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.SupportsSignIn">
+      <summary>Gets the value telling if the credentials can sign in.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.SupportsSignOut">
+      <summary>Gets the value telling if the credentials can sign out.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.VaultName">
+      <summary>Gets the vault name.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.WebServicesTools.WinAuthCredentials.VaultName">
+      <summary>Gets the vault name.</summary>
+    </member>
+  </members>
+</doc>

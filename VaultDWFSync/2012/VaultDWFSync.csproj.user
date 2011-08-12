@@ -1,0 +1,5 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartArguments>-server localhost -vault DemoVault -username Administrator -nopassword gorillas -rootfolder C:\temp\vault</StartArguments>
+  </PropertyGroup>
+</Project>
